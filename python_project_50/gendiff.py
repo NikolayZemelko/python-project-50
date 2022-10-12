@@ -5,6 +5,7 @@ import argparse
 def main():
 
     parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')
+    parser.add_argument('-f', '--format', help='set format of output')
     parser.add_argument('file_1', metavar='first_file')
     parser.add_argument('file_2', metavar='second_file')
 
