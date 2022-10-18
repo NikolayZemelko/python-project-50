@@ -1,0 +1,10 @@
+name: build
+on: push
+jobs:
+  build:
+    runs-on: ununtu-latest
+    steps:
+      - run: echo "Имя текущего workflow: $GITHUB_WORKFLOW"
+      - uses: actions/checkout@v2
+      - run: install make
+      - run: install pytest
