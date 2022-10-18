@@ -3,12 +3,13 @@
 import argparse
 import json
 
+
 def generate_diff(file_path1, file_path2):
 
     file1 = json.load(open(file_path1))
     file2 = json.load(open(file_path2))
-    dict1 = {y : x for x, y in file1.items()}
-    dict2 = {y : x for x, y in file2.items()}
+    dict1 = {y: x for x, y in file1.items()}
+    dict2 = {y: x for x, y in file2.items()}
 
     dict_temp = dict()
     dict_temp.update(dict1)
@@ -37,9 +38,11 @@ def generate_diff(file_path1, file_path2):
     print(result_str)
     return result_str
 
+
 def main():
 
-    parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')
+    desc = 'Compares two configuration files and shows a difference.'
+    parser = argparse.ArgumentParser(description=desc)
     parser.add_argument('-f', '--format', help='set format of output')
     parser.add_argument('file_1', metavar='first_file')
     parser.add_argument('file_2', metavar='second_file')
@@ -47,6 +50,7 @@ def main():
     args = parser.parse_args()
 
     generate_diff(args.file_1, args.file_2)
+
 
 if __name__ == '__main__':
     main()

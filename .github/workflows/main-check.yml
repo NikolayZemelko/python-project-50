@@ -1,0 +1,16 @@
+name: main-check
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ununtu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: install make
+      - run: install pytest
