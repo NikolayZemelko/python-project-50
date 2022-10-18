@@ -1,5 +1,12 @@
 name: main-check
-on: push
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
 jobs:
   build:
     runs-on: ununtu-latest
