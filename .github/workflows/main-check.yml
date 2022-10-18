@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: main-check
+=======
+name: build
+>>>>>>> d4130922450d2f90814a8afb9956f1ac808a1573
 on: push
 jobs:
   build:
