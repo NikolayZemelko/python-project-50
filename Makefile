@@ -6,5 +6,5 @@ build: # сборка проекта
 	poetry build
 package-install: # установка пакета
 	python3 -m pip install --user dist/*.whl
-tests: # запуск тестов pytest
+test: # запуск тестов pytest
 	pytest
