@@ -8,3 +8,5 @@ package-install: # установка пакета
 	python3 -m pip install --user dist/*.whl
 test: # запуск тестов pytest
 	pytest
+test-coverage:
+	poetry run pytest --cov-report term-missing --cov=gendiff_pack --cov-report xml

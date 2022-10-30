@@ -8,11 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.2.0
-      - uses: actions/checkout@v3
-        with:
-          coverageCommand: pytest coverage
       - name: Set up Python 3.x
         uses: actions/setup-python@v4
         with:
@@ -26,4 +21,10 @@ jobs:
           make lint
       - name: Go tests with pytest
         run: |
-          make tests
+          make test
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.2.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
