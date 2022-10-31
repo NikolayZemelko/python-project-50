@@ -22,7 +22,7 @@ def test_if_first_file_empty(files):
     file2 = files[1]
 
     assert generate_diff(file1, file2) == """{
-    host: hexlet.io
-    timeout: 20
-    verbose: true
+  + host: hexlet.io
+  + timeout: 20
+  + verbose: true
 }"""
