@@ -9,4 +9,4 @@ package-install: # установка пакета
 test: # запуск тестов pytest
 	poetry run pytest
 test-coverage:
-	poetry run pytest  --cov=gendiff --cov-report xml
+	poetry run pytest --cov=gendiff --cov-report xml
