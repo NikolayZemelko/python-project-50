@@ -9,16 +9,18 @@ def generate_diff(f1, f2):
     if len(f1) == 0 and len(f2) == 0:
         return
     else:
+        dict1 = dict()
+        dict2 = dict()
+
         if isinstance(f1, str) and isinstance(f2, str):
-            print(type(f1))
-            print(type(f2))
             file1 = json.load(open(f1))
             file2 = json.load(open(f2))
         elif isinstance(f1, dict) and isinstance(f2, dict):
             file1 = f1
             file2 = f2
-            dict1 = {y: x for x, y in file1.items()}
-            dict2 = {y: x for x, y in file2.items()}
+
+        dict1 = {y: x for x, y in file1.items()}
+        dict2 = {y: x for x, y in file2.items()}
 
         dict_temp = dict()
         dict_temp.update(dict1)
