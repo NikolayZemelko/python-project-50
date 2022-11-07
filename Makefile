@@ -5,7 +5,7 @@ lint: # проверка кода линтеров python
 build: # сборка проекта
 	poetry build
 package-install: # установка пакета
-	python3 -m pip install --user dist/*.whl
+	python3 -m pip install --user dist/*.whl --force-reinstall
 test: # запуск тестов pytest
 	poetry run pytest
 test-coverage:
