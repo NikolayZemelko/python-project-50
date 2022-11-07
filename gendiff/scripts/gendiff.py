@@ -1,7 +1,7 @@
 #!usr/bin/env python3
 
 import argparse
-import json
+from gendiff.parsers import parsers
 
 
 def generate_diff(f1, f2):
@@ -9,15 +9,10 @@ def generate_diff(f1, f2):
     if len(f1) == 0 and len(f2) == 0:
         return
     else:
-        dict1 = dict()
-        dict2 = dict()
 
-        if isinstance(f1, str) and isinstance(f2, str):
-            file1 = json.load(open(f1))
-            file2 = json.load(open(f2))
-        elif isinstance(f1, dict) and isinstance(f2, dict):
-            file1 = f1
-            file2 = f2
+        files = parsers.parsed_files(f1, f2)
+        file1 = files[0]
+        file2 = files[1]
 
         dict1 = {y: x for x, y in file1.items()}
         dict2 = {y: x for x, y in file2.items()}
@@ -25,7 +20,6 @@ def generate_diff(f1, f2):
         dict_temp = dict()
         dict_temp.update(dict1)
         dict_temp.update(dict2)
-
         dict_temp_sorted = sorted(dict_temp, key=dict_temp.get)
 
         dict_result = {}
@@ -34,7 +28,9 @@ def generate_diff(f1, f2):
             dict_result[w] = dict_temp[w]
 
         result_str = '{\n'
+
         for k, v in dict_result.items():
+
             result_str += '  '
 
             if dict1.get(k) and not dict2.get(k):
@@ -45,6 +41,7 @@ def generate_diff(f1, f2):
                 result_str += '+ '
 
             result_str += f'{v}: {k}\n'
+
         result_str += '}'
 
     return result_str
@@ -60,7 +57,8 @@ def main():
 
     args = parser.parse_args()
 
-    generate_diff(args.file_1, args.file_2)
+    result = generate_diff(args.file_1, args.file_2)
+    print(result)
 
 
 if __name__ == '__main__':
